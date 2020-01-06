@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import moment from "moment";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PortfolioContainer from './portfolio-container';
-import NavigationContainer from "./navigation/navigation-container"
+import NavigationContainer from "./navigation/navigation-container";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Blog from "./pages/blog";
+import Contact from "./pages.contact"
+
 
 
 export default class App extends Component {
@@ -9,6 +15,16 @@ export default class App extends Component {
     return (
       <div className='app'>
         <NavigationContainer />
+        <router>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about-me" component={About} />
+            </Switch>
+          </div>
+        </router>
+
+
         <h1>Dallin Bledsoe</h1>
         <div>
         {moment().format('MMMM Do YYYY, h:mm:ss a')}
