@@ -15,7 +15,6 @@ import PortfolioDetail from "./portfolio/portfolio-detail"
 export default class App extends Component {
   
   render() {
-    this.getPortfolioItems()
     return (
       <div className='app'>
           <h1>Dallin Bledsoe</h1>

@@ -32,6 +32,9 @@ export default class PortfolioContainer extends Component {
         .get("https://dallinbledsoe.devcamp.space/portfolio/portfolio_items")
         .then(response => {
           console.log("response data", response);
+          this.setState({
+              data: response.data.portfolio_items
+          })
         })
           .catch(error => {
             console.log(error);
@@ -41,8 +44,12 @@ export default class PortfolioContainer extends Component {
 
     portfolioItems() {
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title} url={"google.com"} slug={item.slug} />
+            return <PortfolioItem title={item.name} url={item.url} slug={item.id} />
         })
+    }
+
+    componentDidMount() {
+        this.getPortfolioItems();
     }
 
     handlePageTitleUpdate() {
