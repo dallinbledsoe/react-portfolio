@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 import PortfolioItem from "./portfolio-item"
 
 export default class PortfolioContainer extends Component {
     constructor() {
         super();
-
+        this.getPortfolioItems = this.getPortfolioItems.bind(this);
         this.state = {
             pageTitle: "Welcome to my portfolio",
             isLoading: false,
@@ -26,6 +26,17 @@ export default class PortfolioContainer extends Component {
             })
         })
     }
+
+    getPortfolioItems() {
+        axios
+        .get("https://dallinbledsoe.devcamp.space/portfolio/portfolio_items")
+        .then(response => {
+          console.log("response data", response);
+        })
+          .catch(error => {
+            console.log(error);
+          })
+        }
  
 
     portfolioItems() {

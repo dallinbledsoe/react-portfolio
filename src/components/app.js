@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -12,7 +13,9 @@ import PortfolioDetail from "./portfolio/portfolio-detail"
 
 
 export default class App extends Component {
+  
   render() {
+    this.getPortfolioItems()
     return (
       <div className='app'>
           <h1>Dallin Bledsoe</h1>
