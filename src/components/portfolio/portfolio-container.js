@@ -13,7 +13,7 @@ export default class PortfolioContainer extends Component {
                 {title: "Quip", category: "eCommerce", slug: 'quip' }, 
                 {title: "Eventbrite", category: "Scheduling", slug: 'eventbrite' },
                 {title: "Ministry Safe", category: "Enterprise", slug: 'minstry-safe' }, 
-                {title: "SwingAway", category: "eCommerce", slug: 'eCommerce' }]
+                {title: "SwingAway", category: "eCommerce", slug: 'swingaway' }]
         }
         this.handleFilter = this.handleFilter.bind(this);
     }
