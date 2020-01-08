@@ -7,7 +7,7 @@ export default function(props) {
         // description
         //id
 
-        const { id, description, thumb_image_url, logo} = props.item;
+        const { id, description, thumb_image_url, logo_url} = props.item;
     return (
         <div className="portfolio-item-wrapper">
             <div
@@ -17,11 +17,13 @@ export default function(props) {
             }}
             />
 
-
-            <img src={logo} />
-            <div>{description}</div>
+            <div className="img-text-wrapper">
+                <div className="logo-wrapper">
+            <img src={logo_url} />
+            </div>
+            <div className="subtitle">{description}</div>
             <Link to={`/portfolio/${id}`}>some link</Link>
-
+            </div>
         </div>
     )
 }
