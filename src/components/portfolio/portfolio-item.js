@@ -22,11 +22,11 @@ render() {
         const { id, description, thumb_image_url, logo_url} = this.props.item;
     return (
         <div className="portfolio-item-wrapper"
-        onMouseEnter={() => this.handleMouseEnter}
+        onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
         >
             <div
-            className={"portfolio-img-background" + this.state.portfolioItemClass}
+            className={"portfolio-img-background" + " " + this.state.portfolioItemClass}
             style={{
                 backgroundImage: "url(" + thumb_image_url + ")" 
             }}
@@ -37,7 +37,7 @@ render() {
             <img src={logo_url} />
             </div>
             <div className="subtitle">{description}</div>
-            <Link to={`/portfolio/${id}`}>some link</Link>
+            {/* <Link to={`/portfolio/${id}`}>some link</Link> */}
             </div>
         </div>
     )
