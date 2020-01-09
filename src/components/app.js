@@ -11,6 +11,13 @@ import NoMatch from "./pages/no-match";
 
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN"
+    }
+  }
   render() {
     return (
       <div className='container'>
