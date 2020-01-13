@@ -1,13 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default class NavigationComponent extends Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
+const NavigationComponent = (props) => {
+  
+  return (
       <div className="nav-wrapper">
         <div className="left-side">
           <div className="nav-link-wrapper">
@@ -36,5 +32,4 @@ export default class NavigationComponent extends Component {
         <div>Dallin Bledsoe</div>
       </div>
     );
-  }
 }
