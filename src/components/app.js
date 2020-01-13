@@ -33,6 +33,10 @@ export default class App extends Component {
     })
   }
 
+  authorizedPages() {
+    return [<Route path="/blog" component={Blog} />];
+  }
+
   render() {
     return (
       <div className='container'>
@@ -55,8 +59,10 @@ export default class App extends Component {
               )}
                />
               <Route path="/about-me" component={About} />
-              <Route path="/blog" component={Blog} />
               <Route path="/contact" component={Contact} />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (
+                this.authorizedPages()
+              ) : null}
               <Route path="/portfolio/:slug" component={PortfolioDetail} />
               <Route component={NoMatch} />
             </Switch>

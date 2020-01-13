@@ -32,9 +32,6 @@ const NavigationComponent = (props) => {
           Contact
         </NavLink>
         </div>
-        <div>
-        {dynamicLink("/blog", "Blog")}
-        </div>
         
         {props.loggedInStatus === "LOGGED_IN" ? (
           dynamicLink("/blog", "Blog")
