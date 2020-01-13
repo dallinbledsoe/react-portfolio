@@ -33,3 +33,5 @@ const NavigationComponent = (props) => {
       </div>
     );
 }
+
+export default NavigationComponent;
