@@ -10,7 +10,21 @@ export default class PortfolioManager extends Component {
         this.state = {
             portfolioItems: []
         }
+        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
+        this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
     }
+
+    handleSuccessfulFormSubmission(portfolioItem) {
+        //TODO
+        // update portolioItems State
+        // add the portfolio item to the list
+    }
+
+    handleFormSubmissionError(error) {
+        console.log("handleFormSubmissionError error", error)
+    }
+
+
     getPortfolioItems() {
         axios.get("http://jordan.devcamp.space/portfolio/portfolio_items", {withCredentials: true})
         .then(response => {
@@ -27,7 +41,10 @@ export default class PortfolioManager extends Component {
         return (
             <div className="portfolio-manager-wrapper">
                 <div className="left-column">
-                <portfolioForm />
+                <portfolioForm
+                    handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                    handleFormSubmissionError={this.handleFormSubmissionError}
+                />
 
                 </div>
                 <div className="right-column">
