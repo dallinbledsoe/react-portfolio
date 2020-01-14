@@ -1,4 +1,4 @@
-import React, { component } from "react";
+import React, { Component } from "react";
 
 export default class PortfolioForm extends Component {
     constructor(props) {
@@ -46,7 +46,6 @@ export default class PortfolioForm extends Component {
                     
 
 
-                    </div>
                     </div>
 
                     <div>
