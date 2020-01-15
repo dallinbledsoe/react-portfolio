@@ -3,6 +3,7 @@ import axios from "axios";
 import PortfolioSidebarList from '../portfolio/portfolio-sidebar-list';
 import PortfolioForm from "../portfolio/portfolio-form"
 
+
 export default class PortfolioManager extends Component {
     constructor() {
         super();
@@ -14,14 +15,20 @@ export default class PortfolioManager extends Component {
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
     }
 
-    handleSuccessfulFormSubmission(portfolioItem) {
-        //TODO
-        // update portolioItems State
-        // add the portfolio item to the list
-    }
+    // handleSuccessfulFormSubmission(portfolioItem) {
+    //     //TODO
+    //     // update portolioItems State
+    //     // add the portfolio item to the list
+    // }
 
     handleFormSubmissionError(error) {
         console.log("handleFormSubmissionError error", error)
+    }
+
+    handleSuccessfulFormSubmission(portfolioItem) {
+        this.setState ({
+            portfolioItems: [portfolioItem].concat(this.state.portfolioItems)
+        })
     }
 
 
