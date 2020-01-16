@@ -130,7 +130,7 @@ export default class PortfolioForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="portfolio-form-wrapper">
         <h1>PortfolioForm</h1>
 
         <form onSubmit={this.handleSubmit}>
