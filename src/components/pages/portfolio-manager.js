@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import PortfolioSidebarList from '../portfolio/portfolio-sidebar-list';
 import PortfolioForm from "../portfolio/portfolio-form"
+import PortfolioItem from "../portfolio/portfolio-item"
 
 
 export default class PortfolioManager extends Component {
@@ -13,6 +14,7 @@ export default class PortfolioManager extends Component {
         }
         this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this)
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this)
+        this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
 
     // handleSuccessfulFormSubmission(portfolioItem) {
@@ -29,6 +31,10 @@ export default class PortfolioManager extends Component {
         this.setState ({
             portfolioItems: [portfolioItem].concat(this.state.portfolioItems)
         })
+    }
+
+    handleDeleteClick(portfolioItem) {
+        console.log("handleDeleteClick", PortfolioItem);
     }
 
 
@@ -55,7 +61,9 @@ export default class PortfolioManager extends Component {
 
                 </div>
                 <div className="right-column">
-                <PortfolioSidebarList data={this.state.portfolioItems}/>
+                <PortfolioSidebarList handleDeleteClick={this.handleDeleteClick} data={this.state.portfolioItems}/>
+                
+                
                 </div>
             </div>
         )
