@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from "axios";
 import PortfolioSidebarList from '../portfolio/portfolio-sidebar-list';
 import PortfolioForm from "../portfolio/portfolio-form"
-import PortfolioItem from "../portfolio/portfolio-item"
 
 
 export default class PortfolioManager extends Component {
@@ -37,8 +36,8 @@ export default class PortfolioManager extends Component {
         })
     }
 
-    handleEditFormSubmission(portolioItem) {
-        this.setState
+    handleEditFormSubmission() {
+        this.getPortfolioItems();
     }
 
     clearPortfolioToEdit() {
