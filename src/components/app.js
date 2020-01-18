@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faSignOutAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
-import Auth from "./pages/auth";
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
-import Blog from "./pages/blog";
 import Contact from "./pages/contact";
-import PortfolioDetail from "./portfolio/portfolio-detail";
-import NoMatch from "./pages/no-match";
+import Blog from "./pages/blog";
+import BlogDetail from "./pages/blog-detail";
 import PortfolioManager from "./pages/portfolio-manager";
+import PortfolioDetail from "./portfolio/portfolio-detail";
+import Auth from "./pages/auth";
+import NoMatch from "./pages/no-match";
+import Icons from "../helpers/icons";
 
-library.add(faTrash, faSignOutAlt, faEdit)
 
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN"
@@ -108,7 +109,7 @@ export default class App extends Component {
                />
               <Route path="/about-me" component={About} />
               <Route path="/contact" component={Contact} />
-              <Route path="/blog" component={Blog} />
+              <Route path="/b/:slug" component={BlogDetail} />
               {this.state.loggedInStatus === "LOGGED_IN" ? (
                 this.authorizedPages()
               ) : null}
