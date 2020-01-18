@@ -1,80 +1,50 @@
 import React, { Component } from "react";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
+import ReactModal from "react-modal";
 
-export default class RichTextEditor extends Component {
+import BlogForm from "../blog/blog-form";
+
+ReactModal.setAppElement(".app-wrapper");
+
+export default class BlogModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      editorState: EditorState.createEmpty()
+    this.customStyles = {
+      content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%",
+        width: "800px"
+      },
+      overlay: {
+        backgroundColor: "rgba(1, 1, 1, 0.75)"
+      }
     };
 
-    this.onEditorStateChange = this.onEditorStateChange.bind(this);
-    this.getBase64 = this.getBase64.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
-  }
-
-  componentWillMount() {
-    if (this.props.editMode && this.props.contentToEdit) {
-      const blocksFromHtml = htmlToDraft(this.props.contentToEdit);
-      const { contentBlocks, entityMap } = blocksFromHtml;
-      const contentState = ContentState.createFromBlockArray(
-        contentBlocks,
-        entityMap
-      );
-      const editorState = EditorState.createWithContent(contentState);
-      this.setState({ editorState });
-    }
-  }
-
-  onEditorStateChange(editorState) {
-    this.setState(
-      { editorState },
-      this.props.handleRichTextEditorChange(
-        draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
-      )
+    this.handleSuccessfullFormSubmission = this.handleSuccessfullFormSubmission.bind(
+      this
     );
   }
 
-  getBase64(file, callback) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => callback(reader.result);
-    reader.onerror = error => {};
-  }
-
-  uploadFile(file) {
-    return new Promise((resolve, reject) => {
-      this.getBase64(file, data => resolve({ data: { link: data } }));
-    });
+  handleSuccessfullFormSubmission(blog) {
+    this.props.handleSuccessfulNewBlogSubmission(blog);
   }
 
   render() {
     return (
-      <div>
-        <Editor
-          editorState={this.state.editorState}
-          wrapperClassName="demo-wrapper"
-          editorClassname="demo-editor"
-          onEditorStateChange={this.onEditorStateChange}
-          toolbar={{
-            inline: { inDropdown: true },
-            list: { inDropdown: true },
-            textAlign: { inDropdown: true },
-            link: { inDropdown: true },
-            history: { inDropdown: true },
-            image: {
-              uploadCallback: this.uploadFile,
-              alt: { present: true, mandatory: false },
-              previewImage: true,
-              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg"
-            }
-          }}
+      <ReactModal
+        style={this.customStyles}
+        onRequestClose={() => {
+          this.props.handleModalClose();
+        }}
+        isOpen={this.props.modalIsOpen}
+      >
+        <BlogForm
+          handleSuccessfullFormSubmission={this.handleSuccessfullFormSubmission}
         />
-      </div>
+      </ReactModal>
     );
   }
 }
