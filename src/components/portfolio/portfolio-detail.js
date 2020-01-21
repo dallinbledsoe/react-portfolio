@@ -42,10 +42,19 @@ logo_url
 
     } = this.state.portfolioItem
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>{description}</p>
-    </div>
+      <div className="portfolio-detail-wrapper">
+        <div className="banner">
+          <img src={logo_url} />
+        </div>
+        <div className="portfolio-detail-description-wrapper">
+          <div className="description">{description}</div>
+        </div>
+        <div className="bottom-content-wrapper">
+          <a href={url} className="site-link" target="_blank">
+            Visit {name}
+            </a>
+        </div>
+      </div>
   );
 }
 }
