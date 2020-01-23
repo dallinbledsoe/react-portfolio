@@ -53,9 +53,9 @@ export default class App extends Component {
       .get("https://api.devcamp.space/logged_in", {
         withCredentials: true
       })
-      .then(response => {
-        const loggedIn = response.data.logged_in;
-        const loggedInStatus = this.state.loggedInStatus;
+     .then(response => {
+       const loggedIn = response.data.logged_in;
+       const loggedInStatus = this.state.loggedInStatus;
 
         if (loggedIn && loggedInStatus === "LOGGED_IN") {
           return loggedIn;
@@ -71,8 +71,8 @@ export default class App extends Component {
       })
       .catch(error => {
         console.log("Error", error);
-      });
-  }
+  });
+}
 
   componentDidMount() {
     this.checkLoginStatus();
@@ -93,7 +93,7 @@ export default class App extends Component {
  handleSuccessfulLogout={this.handleSuccessfulLogout}
  />
 
-        <h2>{this.state.loggedInStatus}</h2>
+       
         
             <Switch>
               <Route exact path="/" component={Home} />
